@@ -87,6 +87,7 @@ report*.md
 !CONTEXT7_INTEGRATION.md
 !UPDATES_SUMMARY.md
 !VERSION_EXAMPLES.md
+!RELEASE.md
 !plugins/README.md
 !Documentation/*.md
 !docs/*.md

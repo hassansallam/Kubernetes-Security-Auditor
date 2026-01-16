@@ -1,0 +1,206 @@
+name: Release Binaries
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g., v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - goos: linux
+            goarch: amd64
+          - goos: linux
+            goarch: arm64
+          - goos: darwin
+            goarch: amd64
+          - goos: darwin
+            goarch: arm64
+          - goos: windows
+            goarch: amd64
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Get version
+        id: version
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Build binary
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          VERSION: ${{ steps.version.outputs.VERSION }}
+        run: |
+          BINARY_NAME="k8s-security-auditor-${{ matrix.goos }}-${{ matrix.goarch }}"
+          if [ "${{ matrix.goos }}" == "windows" ]; then
+            BINARY_NAME="${BINARY_NAME}.exe"
+          fi
+
+          go build -o "${BINARY_NAME}" \
+            -ldflags "-X main.version=${VERSION}" \
+            .
+
+          # Generate checksum
+          sha256sum "${BINARY_NAME}" > "${BINARY_NAME}.sha256"
+
+          echo "BINARY_NAME=${BINARY_NAME}" >> $GITHUB_ENV
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: k8s-security-auditor-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: |
+            k8s-security-auditor-*
+            *.sha256
+
+  release:
+    name: Create GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get version
+        id: version
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Prepare release assets
+        run: |
+          mkdir -p release
+          find artifacts -type f -exec cp {} release/ \;
+          cd release
+          sha256sum k8s-security-auditor-* | grep -v "\.sha256" > checksums.txt
+          ls -lh
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.VERSION }}
+          name: Release ${{ steps.version.outputs.VERSION }}
+          body: |
+            # K8s Security Auditor ${{ steps.version.outputs.VERSION }}
+
+            Production-grade Kubernetes security auditing CLI with support for Kubernetes 1.24-1.35.
+
+            ## Features
+            - ✅ Comprehensive security analysis across 6 categories
+            - ✅ 28 security rules with automatic remediation
+            - ✅ Context7 MCP integration for version-specific documentation
+            - ✅ Multiple output formats (JSON, SARIF, Markdown)
+            - ✅ Automatic cluster version detection
+
+            ## Installation
+
+            Download the appropriate binary for your platform:
+
+            ### Linux (amd64)
+            ```bash
+            curl -L https://github.com/hassansallam/k8s-security-auditor/releases/download/${{ steps.version.outputs.VERSION }}/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+            chmod +x k8s-security-auditor
+            sudo mv k8s-security-auditor /usr/local/bin/
+            ```
+
+            ### Linux (arm64)
+            ```bash
+            curl -L https://github.com/hassansallam/k8s-security-auditor/releases/download/${{ steps.version.outputs.VERSION }}/k8s-security-auditor-linux-arm64 -o k8s-security-auditor
+            chmod +x k8s-security-auditor
+            sudo mv k8s-security-auditor /usr/local/bin/
+            ```
+
+            ### macOS (Intel)
+            ```bash
+            curl -L https://github.com/hassansallam/k8s-security-auditor/releases/download/${{ steps.version.outputs.VERSION }}/k8s-security-auditor-darwin-amd64 -o k8s-security-auditor
+            chmod +x k8s-security-auditor
+            sudo mv k8s-security-auditor /usr/local/bin/
+            ```
+
+            ### macOS (Apple Silicon)
+            ```bash
+            curl -L https://github.com/hassansallam/k8s-security-auditor/releases/download/${{ steps.version.outputs.VERSION }}/k8s-security-auditor-darwin-arm64 -o k8s-security-auditor
+            chmod +x k8s-security-auditor
+            sudo mv k8s-security-auditor /usr/local/bin/
+            ```
+
+            ### Windows (amd64)
+            Download `k8s-security-auditor-windows-amd64.exe` and add to your PATH.
+
+            ## Verification
+
+            Verify the download using checksums:
+            ```bash
+            sha256sum -c checksums.txt
+            ```
+
+            ## Quick Start
+
+            ```bash
+            # Basic audit
+            k8s-security-auditor
+
+            # View cluster version
+            k8s-security-auditor --show-version
+
+            # With Context7 MCP for version-specific docs
+            k8s-security-auditor -v
+
+            # Generate JSON report
+            k8s-security-auditor -o json -f audit-report.json
+
+            # Apply automatic fixes
+            k8s-security-auditor --fix
+            ```
+
+            ## Documentation
+
+            - [README](https://github.com/hassansallam/k8s-security-auditor/blob/main/README.md)
+            - [Quick Start](https://github.com/hassansallam/k8s-security-auditor/blob/main/QUICKSTART.md)
+            - [Context7 Integration](https://github.com/hassansallam/k8s-security-auditor/blob/main/CONTEXT7_INTEGRATION.md)
+
+            ## What's Changed
+
+            See [UPDATES_SUMMARY.md](https://github.com/hassansallam/k8s-security-auditor/blob/main/UPDATES_SUMMARY.md) for detailed changelog.
+          draft: false
+          prerelease: false
+          files: release/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -47,9 +47,48 @@ Advanced agentic reasoning for:
 
 ## Installation
 
+### Download Pre-built Binaries
+
+Download the latest release for your platform from the [Releases page](https://github.com/hassansallam/k8s-security-auditor/releases/latest).
+
+#### Linux (amd64)
+```bash
+curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+chmod +x k8s-security-auditor
+sudo mv k8s-security-auditor /usr/local/bin/
+```
+
+#### Linux (arm64)
+```bash
+curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-arm64 -o k8s-security-auditor
+chmod +x k8s-security-auditor
+sudo mv k8s-security-auditor /usr/local/bin/
+```
+
+#### macOS (Intel)
+```bash
+curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-darwin-amd64 -o k8s-security-auditor
+chmod +x k8s-security-auditor
+sudo mv k8s-security-auditor /usr/local/bin/
+```
+
+#### macOS (Apple Silicon)
+```bash
+curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-darwin-arm64 -o k8s-security-auditor
+chmod +x k8s-security-auditor
+sudo mv k8s-security-auditor /usr/local/bin/
+```
+
+#### Windows (amd64)
+Download [k8s-security-auditor-windows-amd64.exe](https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-windows-amd64.exe) and add to your PATH.
+
+#### Verify Installation
+```bash
+k8s-security-auditor --show-version
+```
+
 ### Prerequisites
 
-- Go 1.21 or higher
 - Access to a Kubernetes cluster
 - Valid kubeconfig file
 
