@@ -19,16 +19,20 @@ jobs:
           go-version: '1.21'
 
       - name: Generate go.sum
+        env:
+          GOFLAGS: "-mod=mod"
         run: |
-          # Build the project to generate go.sum automatically
-          # This avoids the module path resolution issue with go mod tidy
-          go build -v .
+          # Download only external dependencies (not the local module itself)
+          # GOFLAGS="-mod=mod" allows modifications to go.mod/go.sum
+          go mod download
 
           # Verify go.sum was created
           if [ ! -f go.sum ]; then
             echo "Error: go.sum was not generated"
             exit 1
           fi
+
+          echo "go.sum generated successfully with $(wc -l < go.sum) lines"
 
       - name: Commit go.sum
         run: |
