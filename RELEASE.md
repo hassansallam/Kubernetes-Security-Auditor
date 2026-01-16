@@ -8,6 +8,24 @@ The project uses GitHub Actions to automatically build and publish releases for 
 
 ### Creating a Release
 
+#### Prerequisites
+
+Before creating a release, ensure `go.sum` file exists in the repository:
+
+**Option A: Generate via GitHub Actions (Easiest)**
+1. Go to **Actions** tab in GitHub repository
+2. Select **Generate go.sum** workflow
+3. Click **Run workflow**
+4. Wait for it to complete and commit go.sum
+
+**Option B: Generate locally (if you have Go installed)**
+```bash
+go mod tidy
+git add go.sum
+git commit -m "Add go.sum for dependency verification"
+git push
+```
+
 #### Method 1: Tag-based Release (Recommended)
 
 1. **Update version references** (if needed):

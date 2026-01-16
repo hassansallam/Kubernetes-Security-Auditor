@@ -16,6 +16,10 @@ echo "========================================="
 rm -rf ${OUTPUT_DIR}
 mkdir -p ${OUTPUT_DIR}
 
+# Ensure dependencies are tidy
+echo "Tidying dependencies..."
+go mod tidy
+
 # Get dependencies
 echo "Downloading dependencies..."
 go mod download

@@ -15,6 +15,10 @@ REM Clean previous builds
 if exist %OUTPUT_DIR% rmdir /s /q %OUTPUT_DIR%
 mkdir %OUTPUT_DIR%
 
+REM Ensure dependencies are tidy
+echo Tidying dependencies...
+go mod tidy
+
 REM Get dependencies
 echo Downloading dependencies...
 go mod download
