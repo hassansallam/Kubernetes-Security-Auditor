@@ -1,0 +1,302 @@
+# =============================================================================
+# K8s Security Auditor - .gitignore
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Go Build Artifacts
+# -----------------------------------------------------------------------------
+# Binaries for programs and plugins
+bin/
+dist/
+build/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.o
+*.a
+
+# Main binary outputs
+k8s-security-auditor
+k8s-security-auditor-*
+
+# Test artifacts
+*.test
+*.out
+coverage.txt
+coverage.html
+*.cov
+*.coverprofile
+
+# Go workspace
+vendor/
+go.work
+
+# Go build cache
+.cache/
+
+# -----------------------------------------------------------------------------
+# IDE and Editor Files
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.bak
+.project
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# -----------------------------------------------------------------------------
+# Audit Output Files (Generated Reports)
+# -----------------------------------------------------------------------------
+# JSON audit reports
+audit*.json
+results*.json
+*-audit.json
+pre-upgrade-audit.json
+post-upgrade-audit.json
+dev-audit.json
+staging-audit.json
+prod-audit.json
+
+# SARIF security reports
+*.sarif
+results*.sarif
+*-audit.sarif
+
+# Markdown reports (exclude documentation)
+audit*.md
+*-audit.md
+security-report*.md
+enhanced*.md
+report*.md
+
+# Allow documentation markdown files
+!README.md
+!QUICKSTART.md
+!EXAMPLES.md
+!CONTRIBUTING.md
+!SECURITY.md
+!PROJECT_STRUCTURE.md
+!IMPLEMENTATION_SUMMARY.md
+!CONTEXT7_INTEGRATION.md
+!UPDATES_SUMMARY.md
+!VERSION_EXAMPLES.md
+!plugins/README.md
+!Documentation/*.md
+!docs/*.md
+
+# -----------------------------------------------------------------------------
+# Kubernetes Configuration Files (CRITICAL - NEVER COMMIT)
+# -----------------------------------------------------------------------------
+# These files contain cluster credentials and should NEVER be committed
+kubeconfig
+*.kubeconfig
+config.yaml
+cluster-config.yaml
+.kube/
+kube-config
+*-kubeconfig.yaml
+
+# -----------------------------------------------------------------------------
+# Secrets and Credentials (CRITICAL - NEVER COMMIT)
+# -----------------------------------------------------------------------------
+# Secret files
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.csr
+*.cer
+ca.crt
+tls.crt
+tls.key
+secrets/
+credentials/
+.env
+.env.local
+.env.*.local
+*-secret.yaml
+*-secret.yml
+secrets.yaml
+secrets.yml
+
+# -----------------------------------------------------------------------------
+# Python (for optional agentic plugin)
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+ENV/
+.venv
+*.pyc
+
+# Python distribution / packaging
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# -----------------------------------------------------------------------------
+# Logs and Temporary Files
+# -----------------------------------------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+tmp/
+temp/
+*.tmp
+.tmp/
+.temp/
+
+# -----------------------------------------------------------------------------
+# OS-Specific Files
+# -----------------------------------------------------------------------------
+# macOS
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+.fuse_hidden*
+.directory
+.nfs*
+
+# -----------------------------------------------------------------------------
+# Docker and Container Artifacts
+# -----------------------------------------------------------------------------
+.docker/
+docker-compose.override.yml
+
+# -----------------------------------------------------------------------------
+# Context7 MCP Server Data/Cache
+# -----------------------------------------------------------------------------
+.mcp/
+context7-cache/
+.context7/
+.mcp-cache/
+
+# -----------------------------------------------------------------------------
+# Project-Specific Output Directories
+# -----------------------------------------------------------------------------
+output/
+reports/
+artifacts/
+
+# -----------------------------------------------------------------------------
+# Backup Files
+# -----------------------------------------------------------------------------
+*.backup
+*.old
+*_backup
+*_old
+*.bak
+
+# -----------------------------------------------------------------------------
+# CI/CD Artifacts
+# -----------------------------------------------------------------------------
+.circleci/
+.travis.yml.bak
+.github/workflows/*.bak
+
+# -----------------------------------------------------------------------------
+# Documentation Build Artifacts
+# -----------------------------------------------------------------------------
+docs/_build/
+docs/.buildinfo
+site/
+
+# -----------------------------------------------------------------------------
+# Performance and Debug Files
+# -----------------------------------------------------------------------------
+# Benchmark results
+benchmarks/
+*.bench
+
+# Profile data
+*.prof
+*.pprof
+cpu.prof
+mem.prof
+trace.out
+
+# Debug files
+debug
+debug.test
+__debug_bin
+
+# -----------------------------------------------------------------------------
+# Archives
+# -----------------------------------------------------------------------------
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.iso
+*.dmg
+*.bin
+*.img
+
+# -----------------------------------------------------------------------------
+# Audit Metadata (Generated)
+# -----------------------------------------------------------------------------
+audit-metadata.txt
+cluster-version.txt
