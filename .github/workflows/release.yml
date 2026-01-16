@@ -50,11 +50,20 @@ jobs:
             echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
           fi
 
+      - name: Verify dependencies
+        run: |
+          # Verify go.sum is present and valid
+          go mod verify
+
+          # List module info for debugging
+          go list -m all
+
       - name: Build binary
         env:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
           VERSION: ${{ steps.version.outputs.VERSION }}
+          CGO_ENABLED: 0
         run: |
           BINARY_NAME="k8s-security-auditor-${{ matrix.goos }}-${{ matrix.goarch }}"
           if [ "${{ matrix.goos }}" == "windows" ]; then
