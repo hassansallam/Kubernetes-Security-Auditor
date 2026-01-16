@@ -49,38 +49,38 @@ Advanced agentic reasoning for:
 
 ### Download Pre-built Binaries
 
-Download the latest release for your platform from the [Releases page](https://github.com/hassansallam/k8s-security-auditor/releases/latest).
+Download the latest release for your platform from the [Releases page](https://github.com/hassansallam/Kubernetes-Security-Auditor/releases/latest).
 
 #### Linux (amd64)
 ```bash
-curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+curl -L https://github.com/hassansallam/Kubernetes-Security-Auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
 chmod +x k8s-security-auditor
 sudo mv k8s-security-auditor /usr/local/bin/
 ```
 
 #### Linux (arm64)
 ```bash
-curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-arm64 -o k8s-security-auditor
+curl -L https://github.com/hassansallam/Kubernetes-Security-Auditor/releases/latest/download/k8s-security-auditor-linux-arm64 -o k8s-security-auditor
 chmod +x k8s-security-auditor
 sudo mv k8s-security-auditor /usr/local/bin/
 ```
 
 #### macOS (Intel)
 ```bash
-curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-darwin-amd64 -o k8s-security-auditor
+curl -L https://github.com/hassansallam/Kubernetes-Security-Auditor/releases/latest/download/k8s-security-auditor-darwin-amd64 -o k8s-security-auditor
 chmod +x k8s-security-auditor
 sudo mv k8s-security-auditor /usr/local/bin/
 ```
 
 #### macOS (Apple Silicon)
 ```bash
-curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-darwin-arm64 -o k8s-security-auditor
+curl -L https://github.com/hassansallam/Kubernetes-Security-Auditor/releases/latest/download/k8s-security-auditor-darwin-arm64 -o k8s-security-auditor
 chmod +x k8s-security-auditor
 sudo mv k8s-security-auditor /usr/local/bin/
 ```
 
 #### Windows (amd64)
-Download [k8s-security-auditor-windows-amd64.exe](https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-windows-amd64.exe) and add to your PATH.
+Download [k8s-security-auditor-windows-amd64.exe](https://github.com/hassansallam/Kubernetes-Security-Auditor/releases/latest/download/k8s-security-auditor-windows-amd64.exe) and add to your PATH.
 
 #### Verify Installation
 ```bash
@@ -119,7 +119,7 @@ The tool automatically detects your cluster version and fetches version-specific
 ### Build from Source
 
 ```bash
-git clone https://github.com/hassansallam/k8s-security-auditor.git
+git clone https://github.com/hassansallam/Kubernetes-Security-Auditor.git
 cd k8s-security-auditor
 go mod download
 go build -o k8s-security-auditor .
@@ -450,7 +450,7 @@ jobs:
 
       - name: Run K8s Security Audit
         run: |
-          curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+          curl -L https://github.com/hassansallam/Kubernetes-Security-Auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
           chmod +x k8s-security-auditor
           ./k8s-security-auditor -o sarif -f results.sarif
 
@@ -478,7 +478,7 @@ k8s-security-audit:
   image: alpine:latest
   before_script:
     - apk add --no-cache curl jq
-    - curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+    - curl -L https://github.com/hassansallam/Kubernetes-Security-Auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
     - chmod +x k8s-security-auditor
   script:
     - ./k8s-security-auditor -o json -f results.json
@@ -559,5 +559,5 @@ Built with:
 
 ## Support
 
-- Issues: https://github.com/hassansallam/k8s-security-auditor/issues
-- Documentation: https://github.com/hassansallam/k8s-security-auditor/wiki
+- Issues: https://github.com/hassansallam/Kubernetes-Security-Auditor/issues
+- Documentation: https://github.com/hassansallam/Kubernetes-Security-Auditor/wiki

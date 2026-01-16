@@ -160,12 +160,12 @@ After release is published:
 
 1. **Download binary for your platform**:
    ```bash
-   curl -L https://github.com/hassansallam/k8s-security-auditor/releases/download/v1.0.0/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+   curl -L https://github.com/hassansallam/Kubernetes-Security-Auditor/releases/download/v1.0.0/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
    ```
 
 2. **Verify checksum**:
    ```bash
-   curl -L https://github.com/hassansallam/k8s-security-auditor/releases/download/v1.0.0/k8s-security-auditor-linux-amd64.sha256 -o checksum.txt
+   curl -L https://github.com/hassansallam/Kubernetes-Security-Auditor/releases/download/v1.0.0/k8s-security-auditor-linux-amd64.sha256 -o checksum.txt
    sha256sum -c checksum.txt
    ```
 
@@ -234,5 +234,5 @@ The GitHub Actions workflow (`.github/workflows/release.yml`) handles:
 ## Support
 
 For questions about releases:
-- Open an issue: https://github.com/hassansallam/k8s-security-auditor/issues
-- Review existing releases: https://github.com/hassansallam/k8s-security-auditor/releases
+- Open an issue: https://github.com/hassansallam/Kubernetes-Security-Auditor/issues
+- Review existing releases: https://github.com/hassansallam/Kubernetes-Security-Auditor/releases

@@ -6,7 +6,7 @@ Before you can create releases, you need to generate the `go.sum` file. Here's h
 
 ### Step 1: Generate go.sum via GitHub Actions
 
-1. Go to your repository: https://github.com/hassansallam/k8s-security-auditor
+1. Go to your repository: https://github.com/hassansallam/Kubernetes-Security-Auditor
 2. Click on the **Actions** tab
 3. Find and click on **Generate go.sum** workflow in the left sidebar
 4. Click the **Run workflow** button (on the right side)
@@ -42,7 +42,7 @@ git push origin v1.0.0
 ### Step 3: Check the Release
 
 1. Go to the **Actions** tab and watch the build progress
-2. Once complete, go to: https://github.com/hassansallam/k8s-security-auditor/releases
+2. Once complete, go to: https://github.com/hassansallam/Kubernetes-Security-Auditor/releases
 3. You should see your new release with all binaries!
 
 ## What You'll Get
