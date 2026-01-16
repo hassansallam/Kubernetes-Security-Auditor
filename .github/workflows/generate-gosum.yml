@@ -22,9 +22,9 @@ jobs:
         env:
           GOFLAGS: "-mod=mod"
         run: |
-          # Download only external dependencies (not the local module itself)
-          # GOFLAGS="-mod=mod" allows modifications to go.mod/go.sum
-          go mod download
+          # First, tidy go.mod to ensure consistency
+          # This will update go.mod and create/update go.sum
+          go mod tidy
 
           # Verify go.sum was created
           if [ ! -f go.sum ]; then
@@ -34,10 +34,13 @@ jobs:
 
           echo "go.sum generated successfully with $(wc -l < go.sum) lines"
 
-      - name: Commit go.sum
+          # Show what changed
+          git diff go.mod go.sum
+
+      - name: Commit go.mod and go.sum
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add go.sum
-          git diff --staged --quiet || git commit -m "Add go.sum file for dependency verification"
+          git add go.mod go.sum
+          git diff --staged --quiet || git commit -m "Update go.mod and go.sum for Go 1.22 compatibility"
           git push
