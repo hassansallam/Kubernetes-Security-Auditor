@@ -1,4 +1,4 @@
-module github.com/hassansallam/k8s-security-auditor
+module github.com/hassansallam/Kubernetes-Security-Auditor
 
 go 1.21
 

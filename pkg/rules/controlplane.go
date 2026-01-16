@@ -3,7 +3,7 @@ package rules
 import (
 	"context"
 
-	"github.com/hassansallam/k8s-security-auditor/pkg/audit"
+	"github.com/hassansallam/Kubernetes-Security-Auditor/pkg/audit"
 )
 
 // GetControlPlaneRules returns all control plane security rules

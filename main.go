@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/hassansallam/k8s-security-auditor/cmd"
+	"github.com/hassansallam/Kubernetes-Security-Auditor/cmd"
 )
 
 func main() {
