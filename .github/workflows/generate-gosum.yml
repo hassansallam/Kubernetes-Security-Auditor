@@ -23,7 +23,8 @@ jobs:
           CGO_ENABLED: 0
         run: |
           # Build the project which will automatically create go.sum
-          # This approach works because it has the full source context
+          # go build works because it has the full source context and
+          # doesn't try to fetch local packages from external sources
           echo "Building project to generate go.sum..."
           go build -v .
 
@@ -33,15 +34,10 @@ jobs:
             exit 1
           fi
 
-          echo "go.sum generated successfully with $(wc -l < go.sum) lines"
-
-          # Now run go mod tidy to clean up any extra entries
-          echo "Running go mod tidy to optimize go.sum..."
-          go mod tidy
-
-          # Show what changed
-          echo "Changes to go.mod and go.sum:"
-          git diff go.mod go.sum
+          echo "✓ go.sum generated successfully with $(wc -l < go.sum) lines"
+          echo ""
+          echo "go.sum file contents:"
+          head -20 go.sum
 
       - name: Commit go.mod and go.sum
         run: |
