@@ -332,7 +332,7 @@ Potential future improvements:
 - **Context7 Integration**: [CONTEXT7_INTEGRATION.md](CONTEXT7_INTEGRATION.md)
 - **Project Structure**: [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
 - **Quick Start**: [QUICKSTART.md](QUICKSTART.md)
-- **GitHub Issues**: https://github.com/vibecoding/k8s-security-auditor/issues
+- **GitHub Issues**: https://github.com/hassansallam/k8s-security-auditor/issues
 
 ## Questions?
 

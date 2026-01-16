@@ -6,9 +6,9 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	"github.com/vibecoding/k8s-security-auditor/pkg/audit"
-	"github.com/vibecoding/k8s-security-auditor/pkg/client"
-	"github.com/vibecoding/k8s-security-auditor/pkg/output"
+	"github.com/hassansallam/k8s-security-auditor/pkg/audit"
+	"github.com/hassansallam/k8s-security-auditor/pkg/client"
+	"github.com/hassansallam/k8s-security-auditor/pkg/output"
 )
 
 var (

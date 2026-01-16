@@ -5,7 +5,7 @@
 If you discover a security vulnerability in the K8s Security Auditor, please report it responsibly:
 
 1. **DO NOT** open a public GitHub issue
-2. Email: security@vibecoding.com (or your designated security contact)
+2. Email: security@hassansallam.com (or your designated security contact)
 3. Include:
    - Description of the vulnerability
    - Steps to reproduce

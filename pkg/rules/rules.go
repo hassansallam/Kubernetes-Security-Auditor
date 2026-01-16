@@ -3,8 +3,8 @@ package rules
 import (
 	"context"
 
-	"github.com/vibecoding/k8s-security-auditor/pkg/audit"
-	"github.com/vibecoding/k8s-security-auditor/pkg/client"
+	"github.com/hassansallam/k8s-security-auditor/pkg/audit"
+	"github.com/hassansallam/k8s-security-auditor/pkg/client"
 )
 
 // Rule defines the interface for security checks

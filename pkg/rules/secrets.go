@@ -6,7 +6,7 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 
-	"github.com/vibecoding/k8s-security-auditor/pkg/audit"
+	"github.com/hassansallam/k8s-security-auditor/pkg/audit"
 )
 
 // GetSecretsRules returns all secrets security rules

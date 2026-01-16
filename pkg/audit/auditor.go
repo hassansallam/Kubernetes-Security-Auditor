@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/vibecoding/k8s-security-auditor/pkg/client"
-	"github.com/vibecoding/k8s-security-auditor/pkg/rules"
+	"github.com/hassansallam/k8s-security-auditor/pkg/client"
+	"github.com/hassansallam/k8s-security-auditor/pkg/rules"
 )
 
 // Auditor orchestrates security audit execution

@@ -80,7 +80,7 @@ The tool automatically detects your cluster version and fetches version-specific
 ### Build from Source
 
 ```bash
-git clone https://github.com/vibecoding/k8s-security-auditor.git
+git clone https://github.com/hassansallam/k8s-security-auditor.git
 cd k8s-security-auditor
 go mod download
 go build -o k8s-security-auditor .
@@ -411,7 +411,7 @@ jobs:
 
       - name: Run K8s Security Audit
         run: |
-          curl -L https://github.com/vibecoding/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+          curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
           chmod +x k8s-security-auditor
           ./k8s-security-auditor -o sarif -f results.sarif
 
@@ -439,7 +439,7 @@ k8s-security-audit:
   image: alpine:latest
   before_script:
     - apk add --no-cache curl jq
-    - curl -L https://github.com/vibecoding/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+    - curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
     - chmod +x k8s-security-auditor
   script:
     - ./k8s-security-auditor -o json -f results.json
@@ -520,5 +520,5 @@ Built with:
 
 ## Support
 
-- Issues: https://github.com/vibecoding/k8s-security-auditor/issues
-- Documentation: https://github.com/vibecoding/k8s-security-auditor/wiki
+- Issues: https://github.com/hassansallam/k8s-security-auditor/issues
+- Documentation: https://github.com/hassansallam/k8s-security-auditor/wiki

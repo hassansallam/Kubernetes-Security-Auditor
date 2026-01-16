@@ -548,7 +548,7 @@ jobs:
 
       - name: Download auditor
         run: |
-          curl -L https://github.com/vibecoding/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+          curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
           chmod +x k8s-security-auditor
 
       - name: Run audit with Context7
@@ -570,7 +570,7 @@ k8s-security-audit:
     - name: modelcontextprotocol/context7-server:latest
       alias: context7
   script:
-    - curl -L https://github.com/vibecoding/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+    - curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
     - chmod +x k8s-security-auditor
     - ./k8s-security-auditor --mcp-server http://context7:3000 -o json
   artifacts:
@@ -580,7 +580,7 @@ k8s-security-audit:
 
 ## Support
 
-- **GitHub Issues**: https://github.com/vibecoding/k8s-security-auditor/issues
+- **GitHub Issues**: https://github.com/hassansallam/k8s-security-auditor/issues
 - **MCP Documentation**: https://github.com/modelcontextprotocol/specification
 - **Context7 Repository**: https://github.com/modelcontextprotocol/servers
 

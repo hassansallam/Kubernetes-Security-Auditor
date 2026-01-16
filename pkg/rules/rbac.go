@@ -7,7 +7,7 @@ import (
 
 	rbacv1 "k8s.io/api/rbac/v1"
 
-	"github.com/vibecoding/k8s-security-auditor/pkg/audit"
+	"github.com/hassansallam/k8s-security-auditor/pkg/audit"
 )
 
 // GetRBACRules returns all RBAC security rules

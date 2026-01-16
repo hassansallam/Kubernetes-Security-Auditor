@@ -1,4 +1,4 @@
-module github.com/vibecoding/k8s-security-auditor
+module github.com/hassansallam/k8s-security-auditor
 
 go 1.21
 

@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/vibecoding/k8s-security-auditor/pkg/audit"
+	"github.com/hassansallam/k8s-security-auditor/pkg/audit"
 )
 
 // GetNetworkRules returns all network security rules

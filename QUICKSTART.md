@@ -14,29 +14,29 @@ Get started with K8s Security Auditor in 5 minutes.
 
 ```bash
 # Linux
-curl -L https://github.com/vibecoding/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
+curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-linux-amd64 -o k8s-security-auditor
 chmod +x k8s-security-auditor
 sudo mv k8s-security-auditor /usr/local/bin/
 
 # macOS (Intel)
-curl -L https://github.com/vibecoding/k8s-security-auditor/releases/latest/download/k8s-security-auditor-darwin-amd64 -o k8s-security-auditor
+curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-darwin-amd64 -o k8s-security-auditor
 chmod +x k8s-security-auditor
 sudo mv k8s-security-auditor /usr/local/bin/
 
 # macOS (Apple Silicon)
-curl -L https://github.com/vibecoding/k8s-security-auditor/releases/latest/download/k8s-security-auditor-darwin-arm64 -o k8s-security-auditor
+curl -L https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-darwin-arm64 -o k8s-security-auditor
 chmod +x k8s-security-auditor
 sudo mv k8s-security-auditor /usr/local/bin/
 
 # Windows (PowerShell)
-Invoke-WebRequest -Uri "https://github.com/vibecoding/k8s-security-auditor/releases/latest/download/k8s-security-auditor-windows-amd64.exe" -OutFile "k8s-security-auditor.exe"
+Invoke-WebRequest -Uri "https://github.com/hassansallam/k8s-security-auditor/releases/latest/download/k8s-security-auditor-windows-amd64.exe" -OutFile "k8s-security-auditor.exe"
 # Add to PATH manually
 ```
 
 ### Option 2: Build from Source
 
 ```bash
-git clone https://github.com/vibecoding/k8s-security-auditor.git
+git clone https://github.com/hassansallam/k8s-security-auditor.git
 cd k8s-security-auditor
 make build
 sudo make install
@@ -45,8 +45,8 @@ sudo make install
 ### Option 3: Docker
 
 ```bash
-docker pull vibecoding/k8s-security-auditor:latest
-docker run --rm -v ~/.kube:/root/.kube vibecoding/k8s-security-auditor:latest
+docker pull hassansallam/k8s-security-auditor:latest
+docker run --rm -v ~/.kube:/root/.kube hassansallam/k8s-security-auditor:latest
 ```
 
 ## First Audit
@@ -177,7 +177,7 @@ k8s-security-auditor -n critical-apps
 
 - **Documentation**: [README.md](README.md)
 - **Examples**: [EXAMPLES.md](EXAMPLES.md)
-- **Issues**: https://github.com/vibecoding/k8s-security-auditor/issues
+- **Issues**: https://github.com/hassansallam/k8s-security-auditor/issues
 - **Security**: [SECURITY.md](SECURITY.md)
 
 ## What's Next?

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/vibecoding/k8s-security-auditor/pkg/audit"
+	"github.com/hassansallam/k8s-security-auditor/pkg/audit"
 )
 
 // GetSupplyChainRules returns all supply chain security rules
