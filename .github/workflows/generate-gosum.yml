@@ -20,8 +20,15 @@ jobs:
 
       - name: Generate go.sum
         run: |
-          go mod tidy
-          go mod download
+          # Build the project to generate go.sum automatically
+          # This avoids the module path resolution issue with go mod tidy
+          go build -v .
+
+          # Verify go.sum was created
+          if [ ! -f go.sum ]; then
+            echo "Error: go.sum was not generated"
+            exit 1
+          fi
 
       - name: Commit go.sum
         run: |
