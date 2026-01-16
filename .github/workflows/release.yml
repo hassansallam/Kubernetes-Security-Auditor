@@ -50,14 +50,6 @@ jobs:
             echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
           fi
 
-      - name: Tidy dependencies
-        run: |
-          export GOPRIVATE=github.com/hassansallam/Kubernetes-Security-Auditor
-          go mod tidy
-
-      - name: Download dependencies
-        run: go mod download
-
       - name: Build binary
         env:
           GOOS: ${{ matrix.goos }}
