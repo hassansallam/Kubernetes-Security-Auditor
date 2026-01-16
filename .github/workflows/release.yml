@@ -51,7 +51,9 @@ jobs:
           fi
 
       - name: Tidy dependencies
-        run: go mod tidy
+        run: |
+          export GOPRIVATE=github.com/hassansallam/Kubernetes-Security-Auditor
+          go mod tidy
 
       - name: Download dependencies
         run: go mod download
