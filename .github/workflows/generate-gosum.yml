@@ -20,11 +20,12 @@ jobs:
 
       - name: Generate go.sum
         env:
-          GOFLAGS: "-mod=mod"
+          CGO_ENABLED: 0
         run: |
-          # First, tidy go.mod to ensure consistency
-          # This will update go.mod and create/update go.sum
-          go mod tidy
+          # Build the project which will automatically create go.sum
+          # This approach works because it has the full source context
+          echo "Building project to generate go.sum..."
+          go build -v .
 
           # Verify go.sum was created
           if [ ! -f go.sum ]; then
@@ -34,7 +35,12 @@ jobs:
 
           echo "go.sum generated successfully with $(wc -l < go.sum) lines"
 
+          # Now run go mod tidy to clean up any extra entries
+          echo "Running go mod tidy to optimize go.sum..."
+          go mod tidy
+
           # Show what changed
+          echo "Changes to go.mod and go.sum:"
           git diff go.mod go.sum
 
       - name: Commit go.mod and go.sum
